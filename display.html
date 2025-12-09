@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h1>Scanned Results:</h1>
+    <div id="output" style="font-size:30px; color:green;"></div>
+
+    <script>
+        const socket = io();
+        const output = document.getElementById("output");
+
+        socket.on("showOnDesktop", data => {
+            output.innerHTML = data;
+        });
+    </script>
+</body>
+</html>

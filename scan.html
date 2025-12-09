@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/qr-scanner/qr-scanner.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <video id="preview" style="width:100%;"></video>
+
+    <script>
+        const socket = io();
+        const video = document.getElementById("preview");
+
+        const scanner = new QrScanner(video, result => {
+            socket.emit("scanned", result);
+            alert("Scanned: " + result);
+        });
+
+        scanner.start();
+    </script>
+</body>
+</html>
